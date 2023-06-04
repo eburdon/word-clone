@@ -1,6 +1,6 @@
 import React from "react";
 
-function GuessInput() {
+function GuessInput({ addToGuessHistory }) {
   const [localGuess, setLocalGuess] = React.useState('');
 
   const handleLocalGuess = (letter) => {
@@ -8,13 +8,14 @@ function GuessInput() {
   }
 
   const handleLocalSubmit = () => {
-    console.log("Local Submit", {localGuess})
+    console.log("Local Submit", { localGuess })
 
     if (localGuess.length !== 5) {
       window.alert("Please use exactly 5 letters")
       return
     }
 
+    addToGuessHistory(localGuess)
     setLocalGuess('');
   }
 
