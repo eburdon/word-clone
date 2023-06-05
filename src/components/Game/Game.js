@@ -14,9 +14,9 @@ function Game() {
   const [guessHistory, setGuessHistory] = React.useState([])
 
   const addToGuessHistory = (localGuess) => {
-    const newGuess = { id: localGuess, value: localGuess }
+    const newGuess = { id: Math.random(), word: localGuess }
     const newHistory = guessHistory.concat([newGuess])
-    console.log("newHistory", newHistory)
+    setGuessHistory(newHistory)
   }
 
   return (

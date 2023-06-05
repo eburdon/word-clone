@@ -1,11 +1,20 @@
 import React from "react";
 
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
+import Guess from "../Guess";
+import { range } from "../../utils";
+
+
 function GuessResults({ guessHistory }) {
+  const numEmptySpans = NUM_OF_GUESSES_ALLOWED - guessHistory.length
   return (
-    <div>
-      {guessHistory.map(({ id, value }) => {
-        return <p key={id}>{value}</p>
+    <div className="guess-results">
+      {guessHistory.map((localGuess) => {
+        return <Guess key={`guess-${localGuess.id}`} value={localGuess} />
       })}
+      {
+        range(numEmptySpans).map((num) => (<Guess key={num} value={"undefined"} />))
+      }
     </div>
   );
 }
