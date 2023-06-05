@@ -1,17 +1,19 @@
 import React from "react";
 import { range } from "../../utils";
+import { checkGuess } from "../../game-helpers";
 
-function Guess({ value }) {
+function Guess({ value, answer }) {
   const spanArray = []
 
   if (value !== "undefined") {
-    for (const letter of value.word) {
+    const guessResults = checkGuess(value.word, answer)
+    for (const element of guessResults) {
       spanArray.push(
-        <span className="cell" key={Math.random()}>{letter}</span>
+        <span className={`cell ${element.status}`} key={Math.random()}>{element.letter}</span>
       )
     }
   } else {
-    range(5).map((num) => (
+    range(5).map(() => (
       spanArray.push(
         <span className="cell" key={Math.random()}></span>
       )))
