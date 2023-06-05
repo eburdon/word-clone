@@ -1,6 +1,6 @@
 import React from "react";
 
-function GuessInput({ addToGuessHistory }) {
+function GuessInput({ addToGuessHistory, disableInput }) {
   const [localGuess, setLocalGuess] = React.useState('');
 
   const handleLocalGuess = (letter) => {
@@ -29,6 +29,7 @@ function GuessInput({ addToGuessHistory }) {
       <label htmlFor="guess-input">Enter guess:</label>
       <input
         required
+        disabled={disableInput}
         id="guess-input"
         type="text"
         value={localGuess}
